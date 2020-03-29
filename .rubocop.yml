@@ -1,0 +1,50 @@
+AllCops:
+  TargetRubyVersion: 2.6
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Metrics/AbcSize:
+  Max: 20
+  Exclude:
+  - db/migrate/20190816143054_create_doorkeeper_tables.rb
+
+Metrics/BlockLength:
+  Exclude:
+  - config/routes.rb
+  - spec/**/*.rb
+  - config/routes/*.rb
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+  - db/migrate/20190816143054_create_doorkeeper_tables.rb
+
+Metrics/ModuleLength:
+  Max: 150
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
+
+inherit_from: .rubocop-excludes.yml

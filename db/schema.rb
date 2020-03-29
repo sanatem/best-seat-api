@@ -17,10 +17,9 @@ ActiveRecord::Schema.define(version: 2020_03_27_234436) do
 
   create_table "seats", force: :cascade do |t|
     t.string "seat_id"
-    t.string "row"
-    t.string "string"
+    t.integer "row"
     t.integer "column"
-    t.boolean "status"
+    t.boolean "available", default: true
     t.bigint "venue_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
