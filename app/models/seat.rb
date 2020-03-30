@@ -1,7 +1,10 @@
 class Seat < ApplicationRecord
   belongs_to :venue
 
-  validates :row, uniqueness: { scope: [:column, :venue] }
+  # Validations
+  validates :row, :column, presence: true
+  validates :row, :column, numericality: { greater_than: 0, only_integer: true }
+  validates :row, uniqueness: { scope: %i[column venue] }
 
   ALPH = ('a'..'z').to_a
 

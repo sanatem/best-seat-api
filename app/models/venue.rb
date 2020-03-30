@@ -1,7 +1,12 @@
 class Venue < ApplicationRecord
   has_many :seats
 
-  MAX_ROW = 27
+  MAX_ROWS = 27
+
+  # Validations
+  validates :rows, :columns, presence: true
+  validates :rows, numericality: { less_than_or_equal_to: MAX_ROWS, only_integer: true }
+  validates :rows, :columns, numericality: { greater_than: 0, only_integer: true }
 
   def treshold(n_value = 2)
     (columns / n_value.to_f).ceil
@@ -24,10 +29,10 @@ class Venue < ApplicationRecord
     seat.select!
   end
 
-  def create_seats
+  def create_seats(available = false)
     (1..rows).each do |row|
       (1..columns).each do |col|
-        seats << Seat.new(row: row, column: col, available: false)
+        seats << Seat.new(row: row, column: col, available: available)
       end
     end
   end
