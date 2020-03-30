@@ -39,7 +39,9 @@ class Api::VenuesController < Api::BaseController
 
   # GET /api/v1/venues/:id/best_seat
   def best_seat
-    render_json(seat_serializer, @venue.find_best_seat)
+    @best_seat = @venue.find_best_seat
+    render_not_found_response('No Best seat due availability') && return unless @best_seat
+    render_json(seat_serializer, @best_seat)
   end
 
   private

@@ -8,6 +8,8 @@ class Venue < ApplicationRecord
   end
 
   def find_best_seat
+    return false if available_seats.empty?
+
     # Closest row
     closest_row = available_seats.group_by(&:row).min[1]
     # Closest seat to treshold = Best seat

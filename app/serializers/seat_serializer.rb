@@ -5,9 +5,9 @@ class SeatSerializer
     obj.public_id
   end
 
-  attribute :row do |obj|
-    obj.row_char
-  end
+  attribute :row
+
+  attribute :row_char
 
   attribute :column
 

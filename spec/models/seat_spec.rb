@@ -9,10 +9,13 @@ RSpec.describe Seat, type: :model do
 
   context 'Failure cases' do
     let(:seat) { create(:seat) }
+    let(:venue) { create(:venue) }
 
-    it "shouldn't create book with the same row, column" do
-      expect(true).to eq true
+    it "shouldn't create a seat with the same row, column" do
+      create(:seat, row: 1, column: 1, venue: venue)
+      seat_error = build(:seat, row: 1, column: 1, venue: venue)
+      seat_error.save
+      expect(seat_error.errors).to_not be_empty
     end
-
   end
 end
