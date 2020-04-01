@@ -1,5 +1,7 @@
-puts 'Populating Venue with seats..'
-venue = Venue.create(rows: 2, columns: 5)
+if Rails.env.development?
+  puts 'Populating Venue with seats..'
+  venue = Venue.create(rows: 2, columns: 5)
 
-puts 'Populating seats..'
-venue.create_seats(true)
+  puts 'Populating seats..'
+  venue.create_seats(true)
+end
